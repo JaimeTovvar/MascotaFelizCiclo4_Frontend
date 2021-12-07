@@ -5,14 +5,13 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-user-register',
-  templateUrl: './user-register.component.html',
-  styleUrls: ['./user-register.component.css']
+  selector: 'app-crear-solicitudes-mascotas',
+  templateUrl: './crear-solicitudes-mascotas.component.html',
+  styleUrls: ['./crear-solicitudes-mascotas.component.css']
 })
-export class UserRegisterComponent implements OnInit {
+export class CrearSolicitudesMascotasComponent implements OnInit {
 
   formGroup: FormGroup = new FormGroup({});
-  private isEmail = /\S+@\S+\.\S+/;
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
@@ -28,11 +27,12 @@ export class UserRegisterComponent implements OnInit {
     this.formGroup = this.formBuilder.group(
       {
         name: ['', [Validators.required]],
-        lastName: ['', [Validators.required]],
         year: ['', [Validators.required]],
+        type: ['', [Validators.required]],
         address: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
-        rol: ['sadsad213213']
+        colour: ['', [Validators.required]],
+        sex: ['', [Validators.required]],
+        birthDate: ['', [Validators.required]],
       }
     )
   }
@@ -43,7 +43,7 @@ export class UserRegisterComponent implements OnInit {
       ? 'is-invalid' : validatedField?.touched ? 'is-valid' : ''
   }
 
-  register() {
+  add() {
     if (this.formGroup.invalid) {
       this.formGroup.markAllAsTouched();
     } else {
@@ -52,4 +52,5 @@ export class UserRegisterComponent implements OnInit {
       });
     }
   }
+
 }

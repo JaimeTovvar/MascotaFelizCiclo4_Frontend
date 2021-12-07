@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientsComponent } from './clients/clients.component';
+import { AuthGuard } from 'src/app/guards/authGuard.guard';
+import { CrearSolicitudesMascotasComponent } from './clients/crear-solicitudes-mascotas/crear-solicitudes-mascotas.component';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
     children: [
-      { path: 'clients', component: ClientsComponent },
-    ]
+      {
+        path: 'clients', loadChildren: () => import('./clients/clients.module').then(m => m.ClientsModule)
+      },
+    ],
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

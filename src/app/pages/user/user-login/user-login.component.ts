@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import * as CryptoJS from 'crypto-js';
+import { Credentials } from 'src/app/interfaces/credentials.interface';
 
 @Component({
   selector: 'app-user-login',
@@ -13,7 +16,8 @@ export class UserLoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public router: Router
+    public router: Router,
+    private _serviceAuth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -30,8 +34,13 @@ export class UserLoginComponent implements OnInit {
   }
 
   login(): void {
-    console.log(this.formGroup.value);
-    this.router.navigate(['/home']);
+    let credentials: Credentials = {
+      email: this.formGroup.get('email').value,
+      password: CryptoJS.MD5(this.formGroup.get('password').value).toString()
+    }
+    this._serviceAuth.login(credentials).subscribe(() => {
+      this.router.navigate(['/home']);
+    });
   }
 
   redirectRegister(): void {
