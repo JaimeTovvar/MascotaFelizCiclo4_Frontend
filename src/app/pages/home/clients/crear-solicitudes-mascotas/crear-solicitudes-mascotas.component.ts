@@ -56,7 +56,7 @@ export class CrearSolicitudesMascotasComponent implements OnInit {
     } else {
       let mascota: IMascotas = this.formGroup.value;
       mascota.idUser = this.user.id;
-      this._serviceMascotas.registerMascotas(this.formGroup.value).subscribe(() => {
+      this._serviceMascotas.registerMascotas(mascota).subscribe(() => {
         this.toastr.success('Mascota guardada correctamente');
       });
       this.formGroup.reset();
