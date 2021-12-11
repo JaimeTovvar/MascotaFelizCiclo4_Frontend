@@ -1,10 +1,9 @@
-export interface IUser {
+export interface IContact {
   id?: string,
   name: string,
   lastName: string,
   year: number,
-  address: string,
+  contact: string,
   email: string;
-  password: string;
-  rol: string;
+  cel: number;
 }

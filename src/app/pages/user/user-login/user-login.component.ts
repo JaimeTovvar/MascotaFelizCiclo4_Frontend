@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import * as CryptoJS from 'crypto-js';
-import { Credentials } from 'src/app/interfaces/credentials.interface';
+import { ICredentials } from 'src/app/interfaces/credentials.interface';
 
 @Component({
   selector: 'app-user-login',
@@ -34,7 +34,7 @@ export class UserLoginComponent implements OnInit {
   }
 
   login(): void {
-    let credentials: Credentials = {
+    let credentials: ICredentials = {
       email: this.formGroup.get('email').value,
       password: CryptoJS.MD5(this.formGroup.get('password').value).toString()
     }
@@ -46,4 +46,10 @@ export class UserLoginComponent implements OnInit {
   redirectRegister(): void {
     this.router.navigate(['/user/register']);
   }
+
+  redirectContact(): void {
+    this.router.navigate(['/user/contact']);
+  }
+
+
 }

@@ -1,9 +1,45 @@
 <main class="form-login">
   <div class="sidenav">
-    <div class="login-main-text">
-      <h2>Aplicación<br> Mascotas</h2>
-      <p>Gestión mascotas</p>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="text-center">
+            <h2 class="colorBlanco">Aplicación Mascotas</h2>
+            <p class="colorBlanco">Gestión mascotas</p>
+          </div>
+        </div>
+        <div class="carousel-item text-center">
+          <h2 class="colorBlanco">Misión</h2>
+          <div class="col-md-8" style="margin: 0 auto;">
+            <p class="colorBlanco">Mascota Feliz está dedicada a proveer cuidado colaborativo y bondadoso hacia los
+              animales
+              además liderar el avance en la medicina veterinaria a través de la investigación, educación y
+              responsabilidad.</p>
+          </div>
+        </div>
+        <div class="carousel-item text-center">
+          <h2 class="colorBlanco">Visión</h2>
+          <div class="col-md-8" style="margin: 0 auto;">
+            <p class="colorBlanco">Comprometida a ser la mas confiable y respetada entidad veterinaria ya que administra
+              el mejor
+              cuidado medico y emocional tanto a los animales como a cada persona que hace parte de nuestra compañia
+              asimismo brindar un servicio al cliente excepcional.</p>
+          </div>
+
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+
   </div>
   <div class="main">
     <div class="col-md-6 col-sm-12">
@@ -19,12 +55,15 @@
               placeholder="Password">
           </div>
           <br />
-          <div class="col-md-12" style="display: flex;">
-            <div class="col-md-5">
+          <div class="col-md-12">
+            <div class="col-md-12 text-center">
               <button type="submit" class="btn btn-black col-md-6" [disabled]="formGroup.invalid">Login</button>
             </div>
-            <div class="col-md-7 align-items-end">
-              <button class="btn btn-secondary" (click)="redirectRegister()">Register Client</button>
+            <div class="col-md-12 text-center mt-2">
+              <button class="btn btn-secondary col-md-6" (click)="redirectRegister()">Registrar Cliente</button>
+            </div>
+            <div class="col-md-12 text-center mt-2">
+              <button class="btn btn-primary col-md-6" (click)="redirectContact()">Formulario Contacto</button>
             </div>
           </div>
         </form>

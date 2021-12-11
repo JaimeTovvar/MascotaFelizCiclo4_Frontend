@@ -5,11 +5,11 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-user-register',
-  templateUrl: './user-register.component.html',
-  styleUrls: ['./user-register.component.css']
+  selector: 'app-user-contact',
+  templateUrl: './user-contact.component.html',
+  styleUrls: ['./user-contact.component.css']
 })
-export class UserRegisterComponent implements OnInit {
+export class UserContactComponent implements OnInit {
 
   formGroup: FormGroup = new FormGroup({});
   private isEmail = /\S+@\S+\.\S+/;
@@ -30,9 +30,9 @@ export class UserRegisterComponent implements OnInit {
         name: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         year: ['', [Validators.required]],
-        address: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
-        rol: ['sadsad213213']
+        comments: ['', [Validators.required]],
+        cel: ['', [Validators.required, Validators.maxLength(10)]],
+        email: ['', [Validators.required, Validators.pattern(this.isEmail)]]
       }
     )
   }
@@ -43,14 +43,15 @@ export class UserRegisterComponent implements OnInit {
       ? 'is-invalid' : validatedField?.touched ? 'is-valid' : ''
   }
 
-  register() {
+  contact() {
     if (this.formGroup.invalid) {
       this.formGroup.markAllAsTouched();
     } else {
-      this._serviceAuth.registerUser(this.formGroup.value).subscribe(() => {
+      this._serviceAuth.registerContact(this.formGroup.value).subscribe(() => {
         this.router.navigate(['user/login']);
-        this.toastr.success('Cliente guardado correctamente', 'Porfavor revice su correo donde se le enviaran sus credenciales');
+        this.toastr.success('Se le notificara la respuesta por parte del administrador', 'Comentario registrado correctamente');
       });
     }
   }
+
 }
