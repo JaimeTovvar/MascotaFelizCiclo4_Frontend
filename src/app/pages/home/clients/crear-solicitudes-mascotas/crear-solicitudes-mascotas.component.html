@@ -37,10 +37,19 @@
         <input type="text" name="address" formControlName="address" class="form-control"
           [class]="isValidField('address')" placeholder="Dirección">
       </div>
+      <div class="form-group">
+        <label>Imagen</label>
+        <input type="file" (change)="encodeImageFileAsURL($event)" />
+        <img [src]="imagePath" width="100px" class="text-center">
+      </div>
+
       <br />
       <div class="col-md-12 text-center">
         <div class="col-md-12 ">
-          <button type="submit" class="btn btn-primary col-md-8" [disabled]="formGroup.invalid">Agregar</button>
+          <button type="submit" class="btn btn-dark col-md-8" [disabled]="formGroup.invalid">Agregar</button>
+        </div>
+        <div class="col-md-12 mt-3">
+          <button type="button" class="btn btn-primary col-md-8" (click)="cancel()">Cancelar</button>
         </div>
       </div>
     </form>

@@ -32,7 +32,8 @@ export class UserRegisterComponent implements OnInit {
         year: ['', [Validators.required]],
         address: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
-        rol: ['sadsad213213']
+        rol: ['61b67b298c35342690266e12'],
+        nameRol: ['Cliente']
       }
     )
   }

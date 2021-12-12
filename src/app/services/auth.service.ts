@@ -65,7 +65,8 @@ export class AuthService {
         address: decode?.address,
         email: decode?.email,
         password: '',
-        rol: decode?.rol
+        rol: decode?.rol,
+        nameRol: decode?.nameRol
       }
       return userLogin;
     }

@@ -7,5 +7,7 @@ export interface IMascotas {
   colour: string;
   sex: string;
   birthDate: string;
+  estado: string;
   idUser: string;
+  imagen: string;
 }

@@ -7,17 +7,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive='active' [routerLink]="['clients/crearSolicitudes']">Afiliación de
-            Mascota</a>
+        <li class="nav-item" *ngIf="user.nameRol == 'Cliente'">
+          <a class="nav-link" routerLinkActive='active' [routerLink]="['clients/listSolicitudes']">Afiliación de
+            Solicitudes mascota</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive='active' href="#">Solicitudes</a>
+        <li class="nav-item" *ngIf="user.nameRol == 'Administrador'">
+          <a class="nav-link" routerLinkActive='active'
+            [routerLink]="['administrador/aprobarSolicitudes']">Aprobar/Rechazar mascota</a>
         </li>
       </ul>
       <div>
         <span class="navbar-text">
           {{ user.name }} {{ user.lastName }}
+        </span>
+        <span class="navbar-text">
+          ( {{ user.nameRol }} )
         </span>
         <i class="bi bi-box-arrow-left" title="Cerrar sesión" (click)="logout()"></i>
       </div>

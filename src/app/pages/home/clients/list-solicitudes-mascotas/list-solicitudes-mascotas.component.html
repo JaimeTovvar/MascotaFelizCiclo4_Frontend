@@ -1,0 +1,35 @@
+<h2 class="text-center">Lista Solicitudes Mascota</h2>
+<div class="col-md-12 text-end">
+  <button class="btn btn btn-dark" (click)="agregar()">Agregar <i class="bi bi-plus-circle"></i></button>
+</div>
+<table class="table table-striped mt-4">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Años</th>
+      <th scope="col">Raza</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">Fecha Nacimiento</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of mascotas | paginate: { itemsPerPage: 5, currentPage: p }">
+      <th scope="row"><img [src]="item.imagen | domImg" width="80px" /></th>
+      <td>{{ item.name }}</td>
+      <td>{{ item.year }}</td>
+      <td>{{ item.type }}</td>
+      <td>{{ item.sex }}</td>
+      <td>{{ item.birthDate }}</td>
+      <td *ngIf="item.estado == 'pendiente'" class="text-warning">{{ item.estado }}</td>
+      <td *ngIf="item.estado == 'aceptado'" class="text-success">{{ item.estado }}</td>
+      <td *ngIf="item.estado == 'rechazado'" class="text-danger">{{ item.estado }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="delete(item)"><i class="bi bi-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { NavbarModule } from 'src/app/components/shared/navbar/navbar.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptorInterceptor } from 'src/app/interceptors/jwt-interceptor.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { JwtInterceptorInterceptor } from 'src/app/interceptors/jwt-interceptor.
   imports: [
     CommonModule,
     HomeRoutingModule,
-    NavbarModule
+    NavbarModule,
+    NgxSpinnerModule
   ],
   providers: [
     {
