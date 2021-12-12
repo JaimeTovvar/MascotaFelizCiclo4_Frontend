@@ -16,16 +16,13 @@ export class AprobarSolicitudesMascotasComponent implements OnInit {
 
   p: number = 1;
   mascotas: IMascotas[] = [];
-  user: IUser;
 
 
   constructor(
     private _serviceMascota: MascotasService,
-    private _serviceAuth: AuthService,
     private router: Router,
     private spinner: NgxSpinnerService
   ) {
-    this.user = this._serviceAuth.getUser();
   }
 
   ngOnInit(): void {
@@ -34,7 +31,7 @@ export class AprobarSolicitudesMascotasComponent implements OnInit {
 
   getMascotas() {
     this.spinner.show();
-    this._serviceMascota.getMascotasUser(this.user.id).subscribe(mascotas => {
+    this._serviceMascota.getMascotas().subscribe(mascotas => {
       this.spinner.hide();
       this.mascotas = mascotas;
     });
@@ -55,7 +52,7 @@ export class AprobarSolicitudesMascotasComponent implements OnInit {
       showCancelButton: true
     }).then((result) => {
       if (result.isConfirmed) {
-        item.estado = 'aprobado';
+        item.estado = 'aceptado';
         this._serviceMascota.updateMascotas(item).subscribe(() => {
           this.getMascotas();
         })
