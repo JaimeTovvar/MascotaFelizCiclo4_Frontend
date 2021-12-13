@@ -70,7 +70,7 @@ export class AprobarSolicitudesMascotasComponent implements OnInit {
       showCancelButton: true
     }).then((result) => {
       if (result.isConfirmed) {
-        item.estado = 'aceptado';
+        item.estado = 'rechazado';
         this._serviceMascota.updateMascotas(item).subscribe(() => {
           this.getMascotas();
         })
